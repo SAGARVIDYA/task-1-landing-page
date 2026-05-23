@@ -11,13 +11,14 @@ import imgsix from '../assets/steel-pro-shaker.jpg'
 function Hero() {
 
   const [products, setProducts] = useState([
+
     {
       id: 1,
       name: "Dumbbell",
       price: 250,
       ratings: 4.5,
-      img: imgfour,
-      count: 0
+      quantity: 1,
+      img: imgfour
     },
 
     {
@@ -25,17 +26,17 @@ function Hero() {
       name: "Barbell",
       price: 500,
       ratings: 4.5,
-      img: imgtwo,
-      count: 0
+      quantity: 1,
+      img: imgtwo
     },
 
     {
       id: 3,
-      name: "Lifting belt",
+      name: "Lifting Belt",
       price: 600,
       ratings: 4.5,
-      img: imgthree,
-      count: 0
+      quantity: 1,
+      img: imgthree
     },
 
     {
@@ -43,8 +44,8 @@ function Hero() {
       name: "Hand Wrist",
       price: 100,
       ratings: 4.5,
-      img: imgfive,
-      count: 0
+      quantity: 1,
+      img: imgfive
     },
 
     {
@@ -52,8 +53,8 @@ function Hero() {
       name: "Gym Bag",
       price: 250,
       ratings: 4.5,
-      img: imgone,
-      count: 0
+      quantity: 1,
+      img: imgone
     },
 
     {
@@ -61,46 +62,59 @@ function Hero() {
       name: "Shaker",
       price: 50,
       ratings: 4.5,
-      img: imgsix,
-      count: 0
-    },
+      quantity: 1,
+      img: imgsix
+    }
+
   ])
+
 
   const increase = (id) => {
 
     const updatedProducts = products.map((item) => {
 
       if (item.id === id) {
+
         return {
           ...item,
-          count: item.count + 1
+          quantity: item.quantity + 1
         }
+
       }
 
       return item
+
     })
 
     setProducts(updatedProducts)
+
   }
+
 
   const decrease = (id) => {
 
     const updatedProducts = products.map((item) => {
 
-      if (item.id === id && item.count > 0) {
+      if (item.id === id && item.quantity > 1) {
+
         return {
           ...item,
-          count: item.count - 1
+          quantity: item.quantity - 1
         }
+
       }
 
       return item
+
     })
 
     setProducts(updatedProducts)
+
   }
 
+
   return (
+
     <div className='container'>
 
       {products.map((object) => (
@@ -115,26 +129,36 @@ function Hero() {
 
           <h1>{object.name}</h1>
 
-          <p>Price : ₹ {object.price}</p>
+          <p>
+            ₹ {object.price * object.quantity}
+          </p>
 
-          <p>Total : ₹ {object.price * object.count}</p>
+          <p>
+            ⭐ {object.ratings}
+          </p>
 
-          <p>⭐ {object.ratings}</p>
+          <div className='counter'>
 
-          <h2>{object.count}</h2>
+            <button
+              className='count-btn'
+              onClick={() => decrease(object.id)}
+            >
+              -
+            </button>
 
-          <button
-            className="btn"
-            onClick={() => increase(object.id)}
-          >
-            +
-          </button>
+            <h2>{object.quantity}</h2>
 
-          <button
-            className="btn"
-            onClick={() => decrease(object.id)}
-          >
-            -
+            <button
+              className='count-btn'
+              onClick={() => increase(object.id)}
+            >
+              +
+            </button>
+
+          </div>
+
+          <button className="btn">
+            Buy Now
           </button>
 
         </div>
@@ -142,6 +166,7 @@ function Hero() {
       ))}
 
     </div>
+
   )
 }
 
