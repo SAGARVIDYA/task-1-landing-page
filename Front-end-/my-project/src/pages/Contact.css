@@ -1,0 +1,18 @@
+.contact{
+    background: black;
+    color: white;
+    min-height: 100vh;
+    padding: 120px 40px;
+}
+
+.contact h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: red;
+}
+
+.contact p{
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: lightgray;
+}
