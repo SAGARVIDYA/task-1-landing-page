@@ -1,7 +1,8 @@
 import React from 'react'
-import Navbar from './COMPONENTS/Navbar'
 
 import { Routes, Route } from 'react-router-dom'
+
+import Navbar from './COMPONENTS/Navbar'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -14,7 +15,7 @@ function App() {
 
     <div>
 
-      <Navbar/>
+      <Navbar />
 
       <Routes>
 
